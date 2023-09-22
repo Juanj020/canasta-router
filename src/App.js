@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment} from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom/cjs/react-router-dom.min';
+import Productos from './Componentes/Productos';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Router>
+        <div>
+          <ul>
+            <li>
+              <Link to="/home">
+                Página principal
+              </Link>
+            </li>
+            <li>
+              <Link to="/productos">
+                Galeria
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <Switch>
+          <Route path="/productos">
+            <Productos />
+          </Route>
+          <Route path="/home">
+            <Productos/>
+          </Route>
+        </Switch>
+      </Router>
+    </Fragment>
   );
 }
 
